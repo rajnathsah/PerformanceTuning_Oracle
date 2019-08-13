@@ -54,8 +54,8 @@ Interval partitioning is an extension to range partitioning in which, beyond a p
    prior to 11g partition key has to be a physical key but in 11g onwards one can use virtual columns as partition key.
 
 5. List the steps to be followed when partioning the existing tables?
-  1. Create a partitioned interim table with same structure of the table to be partitioned.
-  2. Check if redefinition is possible or not.
+    1. Create a partitioned interim table with same structure of the table to be partitioned.
+    2. Check if redefinition is possible or not.
 ```
    EXEC Dbms_Redefinition.Can_Redef_Table(USER, 'BIG_TABLE');
 ```
