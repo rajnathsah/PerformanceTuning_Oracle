@@ -56,9 +56,9 @@ Interval partitioning is an extension to range partitioning in which, beyond a p
 5. List the steps to be followed when partioning the existing tables?
     1. Create a partitioned interim table with same structure of the table to be partitioned.
     2. Check if redefinition is possible or not.
-```
-   EXEC Dbms_Redefinition.Can_Redef_Table(USER, 'BIG_TABLE');
-```
+	```
+		EXEC Dbms_Redefinition.Can_Redef_Table(USER, 'BIG_TABLE');
+	```
     3. If no error then we can start redifinition process.
 ```
 	BEGIN
