@@ -1,4 +1,4 @@
-# Performance Tuning in Oracle Database
+# Performance Tuning - Oracle Database
 
 This repository is about approach to handle performance tuning.
 
