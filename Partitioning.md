@@ -112,7 +112,7 @@ Interval partitioning is an extension to range partitioning in which, beyond a p
        Partitioned key is based on virtual columns (Virtual columns are not stored on disk and only exist as metadata)
 
 8. List the reasons to use partitioning feature?  
-   When database size is huge and indivisual table size is more than 2g then sql running on such table may perform very poorly  
+   When database size is huge and indivisual table size is more than 2g then sql running on such table may perform very poorly.  
    Files recovery may take days  
    Maintenance - Rebuilding of indexes may take days  
    Queried with full table scans take hours to complete  
