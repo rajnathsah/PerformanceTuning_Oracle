@@ -81,7 +81,7 @@ Interval partitioning is an extension to range partitioning in which, beyond a p
 	/
  	```
       This will change the name of interim table to original table.
-    6. Raname the constraints, index and triggers name on the new original table.
+    6. Raname the constraints, index and triggers name on the new original table.  
     7. Verify the table whether partitioning was successful or not
  	```
 	SELECT PARTITIONED
