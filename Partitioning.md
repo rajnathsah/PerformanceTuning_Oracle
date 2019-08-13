@@ -57,10 +57,10 @@ Interval partitioning is an extension to range partitioning in which, beyond a p
     1. Create a partitioned interim table with same structure of the table to be partitioned.
     2. Check if redefinition is possible or not.
 	```
-		EXEC Dbms_Redefinition.Can_Redef_Table(USER, 'BIG_TABLE');
+	EXEC Dbms_Redefinition.Can_Redef_Table(USER, 'BIG_TABLE');
 	```
     3. If no error then we can start redifinition process.
-```
+	```
 	BEGIN
 	  DBMS_REDEFINITION.start_redef_table(
 	  	uname      => USER,        
@@ -68,10 +68,10 @@ Interval partitioning is an extension to range partitioning in which, beyond a p
 	        int_table  => 'BIG_TABLE2');
 	END
 	/
- ```
+ 	```
     4. Move the constraints, indexes, triggers if any to interim table using alternative names.
-	5. Complete the redefinition process
-```   
+    5. Complete the redefinition process
+	```
 	BEGIN
   	  dbms_redefinition.finish_redef_table(
 	  uname      => USER,        
@@ -79,21 +79,21 @@ Interval partitioning is an extension to range partitioning in which, beyond a p
 	  int_table  => 'BIG_TABLE2');
 	END;
 	/
- ```
+ 	```
       This will change the name of interim table to original table.
     6. Raname the constraints, index and triggers name on the new original table.
     7. Verify the table whether partitioning was successful or not
- ```
+ 	```
 	SELECT PARTITIONED
 	FROM USER_TABLES
 	WHERE TABLE_NAME='TAB_NAME';
- ```       
+ 	```
       You can also view the list of partitioned got created for the table by querying.
-```      
+	```
 	select partition_name
 	from user_tab_partitions
 	where table_name ='TAB_NAME'
-```
+	```
 6. When to use global and non-global partitioned index with example?
     1. If the table partitioning column is a subset of the index keys, use local index.
     2. If the index is unique, use global index.
