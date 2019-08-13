@@ -69,8 +69,8 @@ Interval partitioning is an extension to range partitioning in which, beyond a p
 	END
 	/
  ```
-    4. Move the constraints, indexes, triggers if any to interim table using alternative names
-    5. Complete the redefinition process
+    4. Move the constraints, indexes, triggers if any to interim table using alternative names.
+	5. Complete the redefinition process
 ```   
 	BEGIN
   	  dbms_redefinition.finish_redef_table(
