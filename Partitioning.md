@@ -59,9 +59,9 @@ Interval partitioning is an extension to range partitioning in which, beyond a p
 ```
    EXEC Dbms_Redefinition.Can_Redef_Table(USER, 'BIG_TABLE');
 ```
-  3. If no error then we can start redifinition process.
+    3. If no error then we can start redifinition process.
 ```
-BEGIN
+	BEGIN
 	  DBMS_REDEFINITION.start_redef_table(
 	  	uname      => USER,        
 	        orig_table => 'BIG_TABLE',
@@ -69,8 +69,8 @@ BEGIN
 	END
 	/
  ```
-  4. Move the constraints, indexes, triggers if any to interim table using alternative names
-  5. Complete the redefinition process
+    4. Move the constraints, indexes, triggers if any to interim table using alternative names
+    5. Complete the redefinition process
 ```   
 	BEGIN
   	  dbms_redefinition.finish_redef_table(
@@ -81,8 +81,8 @@ BEGIN
 	/
  ```
       This will change the name of interim table to original table.
-  6. Raname the constraints, index and triggers name on the new original table.
-  7. Verify the table whether partitioning was successful or not
+    6. Raname the constraints, index and triggers name on the new original table.
+    7. Verify the table whether partitioning was successful or not
  ```
 	SELECT PARTITIONED
 	FROM USER_TABLES
@@ -95,29 +95,28 @@ BEGIN
 	where table_name ='TAB_NAME'
 ```
 6. When to use global and non-global partitioned index with example?
-   1. If the table partitioning column is a subset of the index keys, use local index.
-   2. If the index is unique, use global index.
-   3. If your priority is manageablity, use local index.
-   4. If application is OLTP one and user needs quick time response, use global index.
+    1. If the table partitioning column is a subset of the index keys, use local index.
+    2. If the index is unique, use global index.
+    3. If your priority is manageablity, use local index.
+    4. If application is OLTP one and user needs quick time response, use global index.
 
 7. List the partitioning improvement in 11g R2.
-   1. Interval partitioning
-      Extension to range partition. Defined by an interval, providing equi-width ranges.
-      With the exception of first partition all partitions are automatically created on demand when matching data arrives.
-      Interval partitioning includes
-      Interval, Interval-Range, Interval-List, Interval-Hash
-   2. REF Partitioning
-      Partitioning for a child table is inherited from the parent table through a primary key-foreign key relationship.
-      The partitioning keys are not stored in actual columns in the child table.
-   3. Virtual column based partitioning
-      Partitioned key is based on virtual columns (Virtual columns are not stored on disk and only exist as metadata)
+    1. Interval partitioning  
+       Extension to range partition. Defined by an interval, providing equi-width ranges.  
+       With the exception of first partition all partitions are automatically created on demand when matching data arrives.  
+       Interval partitioning includes Interval, Interval-Range, Interval-List, Interval-Hash
+    2. REF Partitioning  
+       Partitioning for a child table is inherited from the parent table through a primary key-foreign key relationship.
+       The partitioning keys are not stored in actual columns in the child table.
+    3. Virtual column based partitioning  
+       Partitioned key is based on virtual columns (Virtual columns are not stored on disk and only exist as metadata)
 
 8. List the reasons to use partitioning feature?
-   When database size is huge and indivisual table size is more than 2g then sql running on such table may perform very poorly
-   Files recovery may take days
-   Maintenance - Rebuilding of indexes may take days
-   Queried with full table scans take hours to complete
-   Index range scans become inefficient
+   When database size is huge and indivisual table size is more than 2g then sql running on such table may perform very poorly  
+   Files recovery may take days  
+   Maintenance - Rebuilding of indexes may take days  
+   Queried with full table scans take hours to complete  
+   Index range scans become inefficient  
 
 9. The implementation of partition is based on data values or data types in the table?
    Data values
