@@ -54,10 +54,12 @@ Interval partitioning is an extension to range partitioning in which, beyond a p
    prior to 11g partition key has to be a physical key but in 11g onwards one can use virtual columns as partition key.
 
 5. List the steps to be followed when partioning the existing tables?
-   1. Create a partitioned interim table with same structure of the table to be partitioned.
-   2. Check if redefinition is possible or not.
-   	EXEC Dbms_Redefinition.Can_Redef_Table(USER, 'BIG_TABLE');
-   3. If no error then we can start redifinition process.
+  1. Create a partitioned interim table with same structure of the table to be partitioned.
+  2. Check if redefinition is possible or not.
+```
+   EXEC Dbms_Redefinition.Can_Redef_Table(USER, 'BIG_TABLE');
+```
+  3. If no error then we can start redifinition process.
 ```
 BEGIN
 	  DBMS_REDEFINITION.start_redef_table(
@@ -67,8 +69,8 @@ BEGIN
 	END
 	/
  ```
-   4. Move the constraints, indexes, triggers if any to interim table using alternative names
-   5. Complete the redefinition process
+  4. Move the constraints, indexes, triggers if any to interim table using alternative names
+  5. Complete the redefinition process
 ```   
 	BEGIN
   	  dbms_redefinition.finish_redef_table(
@@ -79,8 +81,8 @@ BEGIN
 	/
  ```
       This will change the name of interim table to original table.
-   6. Raname the constraints, index and triggers name on the new original table.
-   7. Verify the table whether partitioning was successful or not
+  6. Raname the constraints, index and triggers name on the new original table.
+  7. Verify the table whether partitioning was successful or not
  ```
 	SELECT PARTITIONED
 	FROM USER_TABLES
