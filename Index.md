@@ -4,8 +4,8 @@ An index is a performance-tuning method of allowing faster retrieval of records.
 
 ### Types of indexe
 
-1. B Tree
-  General purpose indexes in oracle, they are default indexes in oracle.
+1. B Tree  
+    General purpose indexes in oracle, they are default indexes in oracle.
     B tree index can have at most 32 columns. 
 2. Bitmap
    Bitmap indexes are ideal in cases where low number of distict values. It is ideal for DSS systems where more read happens. 
