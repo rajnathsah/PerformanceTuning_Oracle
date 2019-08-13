@@ -121,8 +121,5 @@ Interval partitioning is an extension to range partitioning in which, beyond a p
 9. The implementation of partition is based on data values or data types in the table?
    Data values
 
-10.Describes the difference between truncating a partition and dropping the partition?
-   Droping a partition also drops the corresponding local index partitions, any global non-partitioned index or partitioned
-   index with refernce to the dropped rows are markes as unusable.
-   Where as by truncating a partition we can get rid of the data stored in that partition but keeps the partition,
-   It also makes corresponding local index partition un-usable
+10. Describes the difference between truncating a partition and dropping the partition?
+    Droping a partition also drops the corresponding local index partitions, any global non-partitioned index or partitioned index with refernce to the dropped rows are markes as unusable.Where as by truncating a partition we can get rid of the data stored in that partition but keeps the partition,It also makes corresponding local index partition un-usable
