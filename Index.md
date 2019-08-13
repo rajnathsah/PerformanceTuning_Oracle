@@ -22,7 +22,7 @@ An index is a performance-tuning method of allowing faster retrieval of records.
    Breaking indexes into pieces. 
 8. Bitmap join indexes  
 
-For details about B-Tree and Bit-Map indexes, please refer the link[B-Tree/Bit-Map](https://www.oracle.com/technetwork/articles/sharma-indexes-093638.html)
+For details about B-Tree and Bit-Map indexes, please refer the link [B-Tree/Bit-Map](https://www.oracle.com/technetwork/articles/sharma-indexes-093638.html)
 
 Oracle documentation on index [Index](https://docs.oracle.com/cd/B12037_01/server.101/b10759/statements_5010.htm)
 
