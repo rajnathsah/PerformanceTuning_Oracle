@@ -56,7 +56,7 @@ Interval partitioning is an extension to range partitioning in which, beyond a p
 5. List the steps to be followed when partioning the existing tables?  
     1. Create a partitioned interim table with same structure of the table to be partitioned.
     2. Check if redefinition is possible or not.
-	```
+	```sql
 	EXEC Dbms_Redefinition.Can_Redef_Table(USER, 'BIG_TABLE');
 	```
     3. If no error then we can start redifinition process.
@@ -71,7 +71,7 @@ Interval partitioning is an extension to range partitioning in which, beyond a p
  	```
     4. Move the constraints, indexes, triggers if any to interim table using alternative names.
     5. Complete the redefinition process
-	```
+	```sql
 	BEGIN
   	  dbms_redefinition.finish_redef_table(
 	  uname      => USER,        
@@ -83,13 +83,13 @@ Interval partitioning is an extension to range partitioning in which, beyond a p
       	This will change the name of interim table to original table.
     6. Raname the constraints, index and triggers name on the new original table.  
     7. Verify the table whether partitioning was successful or not
- 	```
+ 	```sql
 	SELECT PARTITIONED
 	FROM USER_TABLES
 	WHERE TABLE_NAME='TAB_NAME';
  	```
       	You can also view the list of partitioned got created for the table by querying.
-	```
+	```sql
 	select partition_name
 	from user_tab_partitions
 	where table_name ='TAB_NAME'
