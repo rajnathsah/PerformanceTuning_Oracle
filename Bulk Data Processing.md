@@ -33,4 +33,26 @@ Same can be re-written with plan sql, if conditions are simple.
              + ((emp.salary * 10)/100);
 ```
 
-In case, it is not simple, 
+In case, it is not simple, then collections can be used for processing large data in chunks to reduce context switching.
+
+```sql
+DECLARE
+   TYPE employee_ids_t IS TABLE OF employees.employee_id%TYPE
+           INDEX BY PLS_INTEGER; 
+   l_employee_ids   employee_ids_t;   
+
+   l_eligible       BOOLEAN;
+BEGIN
+   SELECT employee_id
+     BULK COLLECT INTO l_employee_ids
+     FROM employees;
+
+   FORALL indx IN 1 .. l_employee_ids.COUNT
+      UPDATE employees emp
+         SET emp.salary =
+                  emp.salary
+                + ((emp.salary * 10)/100)
+       WHERE emp.employee_id = l_employee_ids (indx);
+END increase_salary;
+```
+
