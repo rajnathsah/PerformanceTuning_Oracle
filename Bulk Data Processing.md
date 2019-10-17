@@ -131,9 +131,7 @@ DECLARE
 BEGIN
    SELECT employee_id, salary
      BULK COLLECT INTO l_employees
-     FROM employees
-    WHERE department_id = 10;
-    
+     FROM employees;        
     
     FORALL idx in 1..l_employees.count
         UPDATE employees emp
@@ -141,5 +139,48 @@ BEGIN
         WHERE emp.employee_id = l_employees(idx).employee_id;
         
   COMMIT;
+END;
+```
+
+# FORALL and DML Errors
+
+SAVE EXCEPTIONS clause offers option to process all the possible records. If the SQL engine raises an error, the PL/SQL engine will save that information in a pseudocollection named SQL%BULK_EXCEPTIONS, and continue executing statements. When all statements have been attempted, PL/SQL then raises the ORA-24381 error.
+
+```sql
+DECLARE
+   TYPE two_cols_rt IS RECORD
+   (
+      employee_id   employees.employee_id%TYPE,
+      salary        employees.salary%TYPE
+   );
+
+   TYPE employee_info_t IS TABLE OF two_cols_rt;
+   l_employees   employee_info_t;
+BEGIN
+   SELECT employee_id, salary
+     BULK COLLECT INTO l_employees
+     FROM employees;    
+    
+    
+    FORALL idx in 1..l_employees.count SAVE EXCEPTIONS
+        UPDATE employees emp
+            SET emp.salary=emp.salary + ((emp.salary*10)/100)
+        WHERE emp.employee_id = l_employees(idx).employee_id;
+    
+    EXCEPTION
+    WHEN OTHERS
+    THEN
+      IF SQLCODE = -24381
+      THEN
+         FOR indx IN 1 .. SQL%BULK_EXCEPTIONS.COUNT
+         LOOP
+            DBMS_OUTPUT.put_line (
+                  SQL%BULK_EXCEPTIONS (indx).ERROR_INDEX
+               || ‘: ‘
+               || SQL%BULK_EXCEPTIONS (indx).ERROR_CODE);
+         END LOOP;
+      ELSE
+         RAISE;
+      END IF;
 END;
 ```
