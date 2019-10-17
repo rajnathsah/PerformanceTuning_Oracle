@@ -115,3 +115,31 @@ It generates all the DML statements that would have been executed one row at a t
 3. In at least one place in the DML statement, you need to reference a collection and use the FORALL iterator as the index value in that collection.  
 4. When using the IN low_value . . . high_value syntax in the FORALL header, the collections referenced inside the FORALL statement must be densely filled. That is, every index value between the low_value and high_value must be defined.  
 5. If your collection is not densely filled, you should use the INDICES OF or VALUES OF syntax in your FORALL header.
+
+Update all employee salary by 10% using bulk collect and forall
+
+```sql
+DECLARE
+   TYPE two_cols_rt IS RECORD
+   (
+      employee_id   employees.employee_id%TYPE,
+      salary        employees.salary%TYPE
+   );
+
+   TYPE employee_info_t IS TABLE OF two_cols_rt;
+   l_employees   employee_info_t;
+BEGIN
+   SELECT employee_id, salary
+     BULK COLLECT INTO l_employees
+     FROM employees
+    WHERE department_id = 10;
+    
+    
+    FORALL idx in 1..l_employees.count
+        UPDATE employees emp
+            SET emp.salary=emp.salary + ((emp.salary*10)/100)
+        WHERE emp.employee_id = l_employees(idx).employee_id;
+        
+  COMMIT;
+END;
+```
