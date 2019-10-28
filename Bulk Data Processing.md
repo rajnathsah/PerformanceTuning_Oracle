@@ -176,7 +176,7 @@ BEGIN
          LOOP
             DBMS_OUTPUT.put_line (
                   SQL%BULK_EXCEPTIONS (indx).ERROR_INDEX
-               || ‘: ‘
+               || ':'
                || SQL%BULK_EXCEPTIONS (indx).ERROR_CODE);
          END LOOP;
       ELSE
