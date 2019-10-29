@@ -1,6 +1,6 @@
 # Performance Tuning - Oracle Database
 
-This repository is about approach to handle performance tuning.
+This repository is about performance tuning tips and techniques.
 
 1. [Introduction](https://github.com/rajnathsah/PerformanceTuningInOracle/blob/master/Introduction.md)
 2. [Debugging Strategies](https://github.com/rajnathsah/PerformanceTuningInOracle/blob/master/Debugging%20Strategies.md)
