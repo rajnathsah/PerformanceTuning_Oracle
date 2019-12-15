@@ -1,6 +1,6 @@
 # Explain Plan
 
-The EXPLAIN PLAN statement displays execution plans chosen by the Oracle optimizer for SELECT, UPDATE, INSERT, and DELETE statements. 
+The EXPLAIN PLAN statement displays execution plans chosen by the Oracle optimizer for SELECT, UPDATE, INSERT and DELETE statements. 
 A statement's execution plan is the sequence of operations Oracle performs to run the statement.
 
 The row source tree is the core of the execution plan. It shows the following information:
