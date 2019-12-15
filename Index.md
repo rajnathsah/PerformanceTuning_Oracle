@@ -1,8 +1,8 @@
 # Index
 
-An index is a performance-tuning method of allowing faster retrieval of records. An index creates an entry for each value that appears in the indexed columns. By default, Oracle creates B-tree indexes.
+An index is a method of allowing faster retrieval of records. An index creates an entry for each value that appears in the indexed columns. By default, Oracle creates B-tree indexes.
 
-### Types of indexe
+### Types of indexes
 
 1. B Tree  
     General purpose indexes in oracle, they are default indexes in oracle.
