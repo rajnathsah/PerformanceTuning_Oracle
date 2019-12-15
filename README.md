@@ -9,3 +9,4 @@ This repository is about performance tuning tips and techniques.
 5. [Hints](https://github.com/rajnathsah/PerformanceTuningInOracle/blob/master/Hints.md)
 6. [Partitioning](https://github.com/rajnathsah/PerformanceTuningInOracle/blob/master/Partitioning.md)
 7. [Database Parameter for Performance](https://docs.oracle.com/cd/E11882_01/server.112/e41573/build_db.htm#PFGRF013)
+8. [Bulk Data Processing](https://github.com/rajnathsah/PerformanceTuning_Oracle/blob/master/Bulk%20Data%20Processing.md)
