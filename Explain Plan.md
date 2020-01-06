@@ -51,10 +51,25 @@ Access methods used in Oracle Database:
 14. [Cluster Scans](https://docs.oracle.com/database/121/TGSQL/tgsql_optop.htm#TGSQL94952)
 15. [Hash Scans](https://docs.oracle.com/database/121/TGSQL/tgsql_optop.htm#TGSQL94953)
 
-#### Note :  
+**Join methods**: Join method describes how data from two data producing operators will be joined together. You can identify the join methods used in a SQL statement by looking in the operations column in the explain plan. Depending on the statistics, the optimizer chooses the method with the lowest estimated cost.
+1. [Nested Loops Joins](https://docs.oracle.com/database/121/TGSQL/tgsql_join.htm#TGSQL244)
+2. [Hash Joins](https://docs.oracle.com/database/121/TGSQL/tgsql_join.htm#TGSQL245)
+3. [Sort Merge Joins](https://docs.oracle.com/database/121/TGSQL/tgsql_join.htm#TGSQL94690)
+4. [Cartesian Joins](https://docs.oracle.com/database/121/TGSQL/tgsql_join.htm#TGSQL94986)
+
+**Note**:  
 1. Oracle will always generate the explain plan either based on available statistics or dynamic sampling (Statistics generated at run time). For better plan always maintain latest statistic of objects in your database.  
 2. Plan generated through explain plan command may not be the same plan which oracle will use at the time of query execution. Generated plan may vary with actual used plan. In cases where difference is seen, look at the actual explain plan.  
 
+**How to generate actual explain plan**:
+1. Add the \*/*+ gather_plan_statistics */ hint to query and run query.
+2. Run the below query to view the actual explain plan
+```sql
+SELECT *  FROM  TABLE (DBMS_XPLAN.DISPLAY_CURSOR(null,null,'ALLSTATS LAST'));
+```
+
 For more details refer Oracle guide on [Explain Plan](https://docs.oracle.com/cd/B19306_01/server.102/b14211/ex_plan.htm#i3305).
 
-You can also refer my own document [Explain Plan and Statistics](https://github.com/rajnathsah/Oracle-Scripts-and-Notes/blob/master/Notes/Explain%20Plan%20and%20Statistics%20Help%20Document.doc).
+You can also refer my own document [Explain Plan and Statistics](https://github.com/rajnathsah/Oracle-Scripts-and-Notes/blob/master/Notes/Explain%20Plan%20and%20Statistics%20Help%20Document.doc).  
+
+Happy learning!
