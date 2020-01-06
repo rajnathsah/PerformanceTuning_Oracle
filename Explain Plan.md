@@ -70,6 +70,5 @@ SELECT *  FROM  TABLE (DBMS_XPLAN.DISPLAY_CURSOR(null,null,'ALLSTATS LAST'));
 
 For more details refer Oracle guide on [Explain Plan](https://docs.oracle.com/cd/B19306_01/server.102/b14211/ex_plan.htm#i3305).
 
-You can also refer my own document [Explain Plan and Statistics](https://github.com/rajnathsah/Oracle-Scripts-and-Notes/blob/master/Notes/Explain%20Plan%20and%20Statistics%20Help%20Document.doc).  
 
 Happy learning!
