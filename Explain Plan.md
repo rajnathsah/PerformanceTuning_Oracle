@@ -33,12 +33,27 @@ EXPLAIN PLAN output shows how oracle executes SQL statements. In order to determ
 * Partition pruning – Is it accessing only necessary partitions to answer the query?
 * Parallel Execution – In case of parallel execution, is each operation in the plan being conducted in parallel? Is the right data redistribution method being used?  
 
+**Access methods**:	Access method or access path shows how data will be accessed from each tables, views and indexes.
+Access methods used in Oracle Database:  
+1. [Full Table Scans](https://docs.oracle.com/database/121/TGSQL/tgsql_optop.htm#TGSQL231)
+2. [Table Access by Rowid](https://docs.oracle.com/database/121/TGSQL/tgsql_optop.htm#TGSQL232)
+3. [Sample Table Scans](https://docs.oracle.com/database/121/TGSQL/tgsql_optop.htm#TGSQL233)
+4. [Index Unique Scans](https://docs.oracle.com/database/121/TGSQL/tgsql_optop.htm#TGSQL235)
+5. [Index Range Scans](https://docs.oracle.com/database/121/TGSQL/tgsql_optop.htm#TGSQL236)
+6. [Index Full Scans](https://docs.oracle.com/database/121/TGSQL/tgsql_optop.htm#TGSQL237)
+7. [Index Fast Full Scans](https://docs.oracle.com/database/121/TGSQL/tgsql_optop.htm#TGSQL95171)
+8. [Index Skip Scans](https://docs.oracle.com/database/121/TGSQL/tgsql_optop.htm#TGSQL238)
+9. [Index Join Scans](https://docs.oracle.com/database/121/TGSQL/tgsql_optop.htm#TGSQL95180)
+10. [Bitmap Index Single Value](https://docs.oracle.com/database/121/TGSQL/tgsql_optop.htm#TGSQL95206)
+11. [Bitmap Index Range Scans](https://docs.oracle.com/database/121/TGSQL/tgsql_optop.htm#TGSQL95210)
+12. [Bitmap Merge](https://docs.oracle.com/database/121/TGSQL/tgsql_optop.htm#TGSQL95214)
+13. Bitmap Index Range Scans
+14. [Cluster Scans](https://docs.oracle.com/database/121/TGSQL/tgsql_optop.htm#TGSQL94952)
+15. [Hash Scans](https://docs.oracle.com/database/121/TGSQL/tgsql_optop.htm#TGSQL94953)
+
 #### Note :  
 1. Oracle will always generate the explain plan either based on available statistics or dynamic sampling (Statistics generated at run time). For better plan always maintain latest statistic of objects in your database.  
 2. Plan generated through explain plan command may not be the same plan which oracle will use at the time of query execution. Generated plan may vary with actual used plan. In cases where difference is seen, look at the actual explain plan.  
-
-
-
 
 For more details refer Oracle guide on [Explain Plan](https://docs.oracle.com/cd/B19306_01/server.102/b14211/ex_plan.htm#i3305).
 
